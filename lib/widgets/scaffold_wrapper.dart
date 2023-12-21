@@ -21,11 +21,15 @@ class ScaffoldWrapper extends ConsumerWidget {
               onPressed: () {
                 AppRouteConfig state = ref.read(_navigationProvider);
                 List<AppPath> pageConfig = state.pageConfig;
+
                 AppRouteConfig newState = state.copyWith(
                     pageConfig: pageConfig
-                      ..add((pageConfig.last.runtimeType == LaunchPath)
-                          ? HomePath()
-                          : LaunchPath()));
+                      ..add(switch (pageConfig.last.runtimeType) {
+                        LaunchPath => HomePath(),
+                        HomePath => FuturePath(),
+                        FuturePath => LaunchPath(),
+                        _ => throw Exception('Foreign AppPath')
+                      }));
 
                 ref
                     .read(_navigationProvider.notifier)

@@ -22,6 +22,7 @@ class AppRouteInformationParser extends RouteInformationParser<AppRouteConfig> {
     return switch (pathSegment) {
       'launch-path' => LaunchPath(),
       'home-path' => HomePath(),
+      'future-path' => FuturePath(),
       'undefined-path' => UndefinedPath(),
       _ => UndefinedPath()
     };
@@ -43,6 +44,7 @@ class AppRouteInformationParser extends RouteInformationParser<AppRouteConfig> {
     return switch (appPath.runtimeType) {
       LaunchPath => 'launch-path',
       HomePath => 'home-path',
+      FuturePath => 'future-path',
       UndefinedPath => 'undefined-path',
       _ => 'undefined-path'
     };

@@ -1,3 +1,4 @@
+import 'package:app_navigation_template/pages/FuturePage.dart';
 import 'package:app_navigation_template/pages/HomePage.dart';
 import 'package:app_navigation_template/pages/LaunchPage.dart';
 import 'package:app_navigation_template/pages/UndefinedPage.dart';
@@ -54,6 +55,7 @@ class AppRouterDelegate extends RouterDelegate<AppRouteConfig>
     return switch (appPath.runtimeType) {
       LaunchPath => LaunchPage(),
       HomePath => HomePage(),
+      FuturePath => FuturePage(),
       UndefinedPath => UndefinedPage(),
       _ => UndefinedPage()
     };
